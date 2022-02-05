@@ -19,13 +19,13 @@ export default function FetchMaker({ url, render }: APIProps) {
 
     useEffect(() => {
         async function getData() {
-            setState({ ...state, isLoading: true });
+            setState((state) => ({ ...state, isLoading: true }));
             const response = await fetch(url);
             const { entries } = await response.json();
             setState({ data: entries, isLoading: false });
         }
         getData();
-    }, []);
+    }, [url]);
 
     return render(state);
 }

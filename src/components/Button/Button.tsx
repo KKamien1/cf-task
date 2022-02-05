@@ -6,10 +6,12 @@ type Props = {
     clickHandler: (e: MouseEvent) => void;
 };
 
-export default function Button({ type, label, clickHandler }: Props) {
+function Button({ type, label, clickHandler }: Props) {
     return (
         <button type={type} onClick={clickHandler}>
             {label}
         </button>
     );
 }
+
+export default Button;
