@@ -7,13 +7,11 @@ import { State } from '../../components/FetchMaker/FetchMaker';
 import Loading from '../../components/Loading/Loading';
 
 function ResultList({ data, isLoading }: State) {
-    console.log('first', data, isLoading);
-
     if (isLoading) {
         return <Loading />;
     }
 
-    if (!data) {
+    if (data?.length === 0) {
         return <Title>No Results</Title>;
     }
 

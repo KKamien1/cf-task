@@ -35,7 +35,9 @@ export default function FetchMaker({
         async function getData() {
             setState((state) => ({ ...state, isLoading: true }));
             const response = await fetch(url);
-            let { entries: data } = await response.json();
+            const { entries } = await response.json();
+
+            let data = entries ? entries : [];
 
             filters.forEach((filterFn) => {
                 data = data.filter(filterFn);
@@ -47,7 +49,7 @@ export default function FetchMaker({
 
             setState({ data, isLoading: false });
         }
-    }, [url]);
+    }, [url, filters, limit]);
 
     return render(state);
 }
