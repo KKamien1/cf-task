@@ -5,6 +5,16 @@ type Props = {
     item: AssetType;
 };
 
-export default function ListItem({ item }: Props) {
-    return <a href={item.Link}>{item.API}</a>;
+function ListItem({ item }: Props) {
+    const { Link: href, API: title, Description: info } = item;
+    return (
+        <>
+            <a href={href} target='_blank' rel='noreferrer'>
+                {title}
+            </a>
+            <p>{info}</p>
+        </>
+    );
 }
+
+export default ListItem;
