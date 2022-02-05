@@ -1,22 +1,32 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useCallback } from 'react';
 import FetchMaker from './components/FetchMaker/FetchMaker';
 import Title from './components/Title/Title';
+import { RESULTS_LIMIT } from './constants';
 import ResultList from './containers/ResultsList/ResultList';
 import SearchInput from './containers/SerchInput/SearchInput';
-import { getQueryHref } from './utils/index';
+import { getQueryTitle, filterCORS, filterByDescription } from './utils/index';
 
 function App() {
-    const [keyword, setKeyword] = useState('');
-    const href = useMemo(() => getQueryHref('title', keyword), [keyword]);
+    const [url, setUrl] = useState('');
+    const getUrl = useCallback(
+        (keyword: string) => setUrl(getQueryTitle(keyword)),
+        []
+    );
+
     return (
-        <div className='App'>
+        <>
             <Title>Search for public API</Title>
-            <SearchInput setKeyword={setKeyword} />
+            <SearchInput
+                setUrlWithValue={getUrl}
+                placeholder='Enter API name…'
+            />
             <FetchMaker
-                url={href}
+                url={url}
+                limit={RESULTS_LIMIT}
+                filters={[filterCORS, filterByDescription]}
                 render={(state) => <ResultList {...state} />}
             />
-        </div>
+        </>
     );
 }
 
