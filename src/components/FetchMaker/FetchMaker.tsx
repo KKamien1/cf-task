@@ -16,15 +16,20 @@ export default function FetchMaker({ url, render }: APIProps) {
         data: [],
         isLoading: false,
     });
-
     useEffect(() => {
+        if (url) {
+            try {
+                getData();
+            } catch (error) {
+                console.error(error);
+            }
+        }
         async function getData() {
             setState((state) => ({ ...state, isLoading: true }));
             const response = await fetch(url);
             const { entries } = await response.json();
             setState({ data: entries, isLoading: false });
         }
-        getData();
     }, [url]);
 
     return render(state);

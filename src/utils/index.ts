@@ -1,3 +1,3 @@
-import getQueryHref from './getQueryUrl';
+import { getQueryHref, getQueryTitle } from './getQueryUrl';
 
-export { getQueryHref };
+export { getQueryHref, getQueryTitle };
