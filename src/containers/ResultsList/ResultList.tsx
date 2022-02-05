@@ -1,19 +1,22 @@
 import React from 'react';
 import ListItem from '../../components/ListItem/ListItem';
-import { AssetType } from '../../components/ListItem/types';
 import Title from '../../components/Title/Title';
 import { v4 as uuidv4 } from 'uuid';
 
-type Props = {
-    results: AssetType[];
-};
+import { State } from '../../components/FetchMaker/FetchMaker';
+import Loading from '../../components/Loading/Loading';
 
-export default function ResultList({ results = [] }: Props) {
-    console.log('first', results);
+export default function ResultList({ data, isLoading }: State) {
+    console.log('first', data);
+
+    if (isLoading) {
+        return <Loading />;
+    }
+
     return (
         <div>
             <Title>Results</Title>
-            {results.map((item) => (
+            {data.map((item) => (
                 <ListItem key={uuidv4()} item={item} />
             ))}
         </div>
