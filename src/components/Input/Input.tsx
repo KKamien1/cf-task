@@ -1,7 +1,11 @@
 import React, { ChangeEvent, useState } from 'react';
 
-function Input() {
-    const [value, setValue] = useState<string>('');
+type Props = {
+    value: string;
+    setValue: (str: string) => void;
+};
+
+function Input({ value, setValue }: Props) {
     const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setValue(e.target.value);
     };

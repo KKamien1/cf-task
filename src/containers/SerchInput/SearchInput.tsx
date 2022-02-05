@@ -1,18 +1,20 @@
-import React, { ChangeEvent, useState } from 'react';
-import Input from '../../components/Input/Input';
+import React, { FormEvent } from 'react';
 import Title from '../../components/Title/Title';
-
+import useInput from '../../hooks/useInput';
 function SearchInput() {
-    // const [value, setValue] = useState<string>('');
-    // const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    //     setValue(e.target.value);
-    // };
+    const [Input, keyword, resetKeyword] = useInput();
 
+    const submitHandler = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        if (keyword.length > 0) {
+            resetKeyword();
+        }
+    };
     return (
         <>
             <Title>Search for public API</Title>
-            <form>
-                <Input />
+            <form onSubmit={submitHandler}>
+                {Input}
                 <button type='submit'>Search</button>
             </form>
         </>
