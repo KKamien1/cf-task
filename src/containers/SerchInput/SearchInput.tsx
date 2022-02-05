@@ -2,17 +2,18 @@ import React, { FormEvent, MouseEvent } from 'react';
 import useInput from '../../hooks/useInput';
 
 type Props = {
-    setKeyword: (value: string) => void;
+    setUrlWithValue: (value: string) => void;
+    placeholder: string;
 };
 
-function SearchInput({ setKeyword }: Props) {
-    const [Input, value, resetValue] = useInput();
+function SearchInput({ setUrlWithValue, placeholder }: Props) {
+    const [Input, value, resetValue] = useInput(placeholder);
     const isValid = value.length > 0;
 
     const submitHandler = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (isValid) {
-            setKeyword(value);
+            setUrlWithValue(value);
         }
     };
 
