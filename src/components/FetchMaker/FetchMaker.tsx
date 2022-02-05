@@ -6,12 +6,20 @@ export interface State {
     isLoading: boolean;
 }
 
+type Filter = (item: AssetType) => boolean;
 interface APIProps {
     url: string;
+    limit?: number;
+    filters?: Filter[];
     render: (state: State) => JSX.Element;
 }
 
-export default function FetchMaker({ url, render }: APIProps) {
+export default function FetchMaker({
+    url,
+    limit,
+    filters = [],
+    render,
+}: APIProps) {
     const [state, setState] = useState<State>({
         data: [],
         isLoading: false,
@@ -27,8 +35,17 @@ export default function FetchMaker({ url, render }: APIProps) {
         async function getData() {
             setState((state) => ({ ...state, isLoading: true }));
             const response = await fetch(url);
-            const { entries } = await response.json();
-            setState({ data: entries, isLoading: false });
+            let { entries: data } = await response.json();
+
+            filters.forEach((filterFn) => {
+                data = data.filter(filterFn);
+            });
+
+            if (limit) {
+                data = data.slice(0, limit);
+            }
+
+            setState({ data, isLoading: false });
         }
     }, [url]);
 
