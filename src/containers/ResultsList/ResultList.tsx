@@ -6,11 +6,15 @@ import { v4 as uuidv4 } from 'uuid';
 import { State } from '../../components/FetchMaker/FetchMaker';
 import Loading from '../../components/Loading/Loading';
 
-export default function ResultList({ data, isLoading }: State) {
+function ResultList({ data, isLoading }: State) {
     console.log('first', data, isLoading);
 
     if (isLoading) {
         return <Loading />;
+    }
+
+    if (!data) {
+        return <Title>No Results</Title>;
     }
 
     return (
@@ -22,3 +26,5 @@ export default function ResultList({ data, isLoading }: State) {
         </div>
     );
 }
+
+export default ResultList;
