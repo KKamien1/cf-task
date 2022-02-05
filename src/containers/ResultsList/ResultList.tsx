@@ -7,7 +7,7 @@ import { State } from '../../components/FetchMaker/FetchMaker';
 import Loading from '../../components/Loading/Loading';
 
 export default function ResultList({ data, isLoading }: State) {
-    console.log('first', data);
+    console.log('first', data, isLoading);
 
     if (isLoading) {
         return <Loading />;
