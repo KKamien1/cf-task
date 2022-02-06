@@ -1,3 +1,12 @@
+# My inputs about task | My Assumption
+
+-   No results on initial state with empty input
+-   Have a flexible approach to easily modify in the future e.g. filters, results limit, param (not only title). The Initial setup included in `constans.ts`
+-   I haven't created a theme with css related variables and values. I should be done if we want to extend app in the future.
+-   Tests are basic ones, not covering all necessary causes.
+
+---
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
