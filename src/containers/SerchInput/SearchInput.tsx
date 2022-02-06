@@ -25,10 +25,6 @@ const Buttons = styled.div`
     display: flex;
     justify-content: flex-end;
 `;
-const Link = styled.a`
-    text-decoration: none;
-    font-weight: bold;
-`;
 
 function SearchInput({ setUrlWithValue, placeholder }: Props) {
     const [Input, value, resetValue] = useInput(placeholder);

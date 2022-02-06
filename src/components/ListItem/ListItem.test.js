@@ -1,5 +1,4 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, cleanup } from '@testing-library/react';
 
 import ListItem from './ListItem';
 
@@ -12,6 +11,9 @@ const item = {
 describe('ListItem', () => {
     beforeEach(() => {
         render(<ListItem item={item} />);
+    });
+    afterEach(() => {
+        cleanup();
     });
     it('renders with title', async () => {
         const title = screen.getByText('Sample Title');

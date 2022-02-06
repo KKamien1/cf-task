@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { State } from '../../components/FetchMaker/FetchMaker';
 import Loading from '../../components/Loading/Loading';
 
-function ResultList({ data, isLoading }: State) {
+function ResultsList({ data, isLoading }: State) {
     if (isLoading) {
         return <Loading />;
     }
@@ -24,4 +24,4 @@ function ResultList({ data, isLoading }: State) {
     );
 }
 
-export default ResultList;
+export default ResultsList;
