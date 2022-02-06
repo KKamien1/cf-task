@@ -17,7 +17,7 @@ function ResultList({ data, isLoading }: State) {
 
     return (
         <div>
-            <Title>Results</Title>
+            <Title as='h2'>Results</Title>
             {data.map((item) => (
                 <ListItem key={uuidv4()} item={item} />
             ))}
