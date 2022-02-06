@@ -7,7 +7,6 @@ const InputStyled = styled.input`
     padding: 0.4rem 0.4rem;
     font-size: 1rem;
     border-radius: 0 0;
-    outline: none;
 `;
 
 function Input({ value, setValue, placeholder }: InputProps) {
@@ -21,6 +20,7 @@ function Input({ value, setValue, placeholder }: InputProps) {
             value={value}
             onChange={changeHandler}
             placeholder={placeholder}
+            aria-label='Enter API name'
         />
     );
 }

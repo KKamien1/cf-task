@@ -11,7 +11,7 @@ function ResultList({ data, isLoading }: State) {
     }
 
     if (data?.length === 0) {
-        return <Title>No Results</Title>;
+        return <Title as='h2'>No Results</Title>;
     }
 
     return (
