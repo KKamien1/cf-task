@@ -1,27 +1,10 @@
 import { useEffect, useState } from 'react';
 import useAsyncError from '../../hooks/useAsyncError';
 import { AssetType } from '../ListItem/types';
+import { APIProps, FetchMakerState } from './types';
 
-export interface State {
-    data: AssetType[];
-    isLoading: boolean;
-}
-
-type Filter = (item: AssetType) => boolean;
-interface APIProps {
-    url: string;
-    limit?: number;
-    filters?: Filter[];
-    render: (state: State) => JSX.Element;
-}
-
-export default function FetchMaker({
-    url,
-    limit,
-    filters = [],
-    render,
-}: APIProps) {
-    const [state, setState] = useState<State>({
+function FetchMaker({ url, limit, filters = [], render }: APIProps) {
+    const [state, setState] = useState<FetchMakerState>({
         data: [],
         isLoading: false,
     });
@@ -57,3 +40,5 @@ export default function FetchMaker({
 
     return render(state);
 }
+
+export default FetchMaker;

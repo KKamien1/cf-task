@@ -2,10 +2,10 @@ import React from 'react';
 import ListItem from '../../components/ListItem/ListItem';
 import Title from '../../components/Title/Title';
 import { v4 as uuidv4 } from 'uuid';
-import { State } from '../../components/FetchMaker/FetchMaker';
+import { FetchMakerState } from '../../components/FetchMaker/types';
 import Loading from '../../components/Loading/Loading';
 
-function ResultsList({ data, isLoading }: State) {
+function ResultsList({ data, isLoading }: FetchMakerState) {
     if (isLoading) {
         return <Loading />;
     }

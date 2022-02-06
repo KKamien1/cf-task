@@ -1,9 +1,17 @@
-# My inputs about task | My Assumption
+# My inputs about task | My Assumptions
 
 -   No results on initial state with empty input
--   Have a flexible approach to easily modify in the future e.g. filters, results limit, param (not only title). The Initial setup included in `constans.ts`
+-   Have a flexible approach to easily modify in the future e.g. filters, results limit, param (not only title). The Initial setup included in `constans.ts`.
 -   I haven't created a theme with css related variables and values. I should be done if we want to extend app in the future.
 -   Tests are basic ones, not covering all necessary causes.
+-   It's never perfect. A lot of refactor can be done, just hold my beer and wait a while ;)
+
+TO DO:
+
+-   Remove 'No results' on enter page,
+-   Set focus on input after reset,
+-   Have a look at performance and improve it then.
+-   Extract styled components to separeted files `styled.ts`
 
 ---
 
